@@ -7,22 +7,22 @@ const Navbar = () => {
       <div>
         <ul className="flex justify-center items-center gap-3">
           <li>
-            <a href="#" className="menu-item magnet hideCursor">
+            <a href="#" className="menu-item magnet outlineCursor">
               About
             </a>
           </li>
           <li>
-            <a href="#" className="menu-item magnet hideCursor">
+            <a href="#" className="menu-item magnet outlineCursor">
               Skills
             </a>
           </li>
           <li>
-            <a href="#" className="menu-item magnet hideCursor">
+            <a href="#" className="menu-item magnet outlineCursor">
               Services
             </a>
           </li>
           <li>
-            <a href="#" className="menu-item magnet hideCursor">
+            <a href="#" className="menu-item magnet outlineCursor">
               Projects
             </a>
           </li>

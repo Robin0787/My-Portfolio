@@ -80,6 +80,18 @@
   opacity: 20%;
   background-color: transparent;
 }
+[data-cursor-shadow-5] {
+  width: 8px;
+  height: 8px;
+  opacity: 15%;
+  background-color: transparent;
+}
+[data-cursor-shadow-6] {
+  width: 5px;
+  height: 5px;
+  opacity: 10%;
+  background-color: transparent;
+}
 
 .magnet {
   position: relative;

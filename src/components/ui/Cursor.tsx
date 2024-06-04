@@ -17,33 +17,47 @@ const Cursor = () => {
     const cursorShadow4: HTMLElement | null = document.querySelector(
       "[data-cursor-shadow-4"
     );
+    const cursorShadow5: HTMLElement | null = document.querySelector(
+      "[data-cursor-shadow-5"
+    );
+    const cursorShadow6: HTMLElement | null = document.querySelector(
+      "[data-cursor-shadow-6"
+    );
 
     document.body.addEventListener("mouseenter", () => {
-      showCursor();
+      showCursor("white");
     });
     document.body.addEventListener("mouseleave", () => {
       hideCursor();
     });
 
-    function showCursor() {
+    function showCursor(color: string) {
       cursorDot?.animate(
-        { backgroundColor: "white" },
+        { backgroundColor: color },
         { duration: 100, fill: "forwards" }
       );
       cursorShadow1?.animate(
-        { backgroundColor: "white" },
+        { backgroundColor: color },
         { duration: 100, fill: "forwards" }
       );
       cursorShadow2?.animate(
-        { backgroundColor: "white" },
+        { backgroundColor: color },
         { duration: 100, fill: "forwards" }
       );
       cursorShadow3?.animate(
-        { backgroundColor: "white" },
+        { backgroundColor: color },
         { duration: 100, fill: "forwards" }
       );
       cursorShadow4?.animate(
-        { backgroundColor: "white" },
+        { backgroundColor: color },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow5?.animate(
+        { backgroundColor: color },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow6?.animate(
+        { backgroundColor: color },
         { duration: 100, fill: "forwards" }
       );
     }
@@ -68,6 +82,44 @@ const Cursor = () => {
         { backgroundColor: "transparent" },
         { duration: 100, fill: "forwards" }
       );
+      cursorShadow5?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow6?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+    }
+    function outlineCursor(color: string) {
+      cursorDot?.animate(
+        { borderWidth: "1px", borderStyle: "solid", borderColor: color },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow1?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow2?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow3?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow4?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow5?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+      cursorShadow6?.animate(
+        { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
     }
 
     window.addEventListener("mousemove", (e) => {
@@ -82,7 +134,7 @@ const Cursor = () => {
           left: `${posX}px`,
           top: `${posY}px`,
         },
-        { duration: 300, fill: "forwards" }
+        { duration: 100, fill: "forwards" }
       );
 
       cursorShadow2!.animate(
@@ -90,7 +142,7 @@ const Cursor = () => {
           left: `${posX}px`,
           top: `${posY}px`,
         },
-        { duration: 600, fill: "forwards" }
+        { duration: 300, fill: "forwards" }
       );
 
       cursorShadow3!.animate(
@@ -98,10 +150,24 @@ const Cursor = () => {
           left: `${posX}px`,
           top: `${posY}px`,
         },
-        { duration: 900, fill: "forwards" }
+        { duration: 600, fill: "forwards" }
       );
 
       cursorShadow4!.animate(
+        {
+          left: `${posX}px`,
+          top: `${posY}px`,
+        },
+        { duration: 800, fill: "forwards" }
+      );
+      cursorShadow5!.animate(
+        {
+          left: `${posX}px`,
+          top: `${posY}px`,
+        },
+        { duration: 1000, fill: "forwards" }
+      );
+      cursorShadow6!.animate(
         {
           left: `${posX}px`,
           top: `${posY}px`,
@@ -112,21 +178,39 @@ const Cursor = () => {
 
     const menus = document.querySelectorAll(".magnet");
     const hideCursors = document.querySelectorAll(".hideCursor");
+    const blackCursors = document.querySelectorAll(".blackCursor");
+    const outlineCursors = document.querySelectorAll(".outlineCursor");
 
     hideCursors.forEach((menu) => {
       menu.addEventListener("mouseenter", () => {
         hideCursor();
       });
       menu.addEventListener("mouseleave", () => {
-        showCursor();
+        showCursor("white");
       });
     });
     menus.forEach((menu) => {
       menu.addEventListener("mouseenter", () => {
-        // hideCursor();
+        hideCursor();
       });
       menu.addEventListener("mouseleave", () => {
-        // showCursor();
+        showCursor("white");
+      });
+    });
+    blackCursors.forEach((menu) => {
+      menu.addEventListener("mouseenter", () => {
+        showCursor("black");
+      });
+      menu.addEventListener("mouseleave", () => {
+        showCursor("white");
+      });
+    });
+    outlineCursors.forEach((menu) => {
+      menu.addEventListener("mouseenter", () => {
+        outlineCursor("black");
+      });
+      menu.addEventListener("mouseleave", () => {
+        showCursor("white");
       });
     });
   }, []);
@@ -138,6 +222,8 @@ const Cursor = () => {
       <div className="cursor-shadow" data-cursor-shadow-2></div>
       <div className="cursor-shadow" data-cursor-shadow-3></div>
       <div className="cursor-shadow" data-cursor-shadow-4></div>
+      <div className="cursor-shadow" data-cursor-shadow-5></div>
+      <div className="cursor-shadow" data-cursor-shadow-6></div>
     </div>
   );
 };
