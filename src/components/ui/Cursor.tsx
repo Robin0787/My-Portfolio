@@ -93,7 +93,12 @@ const Cursor = () => {
     }
     function outlineCursor(color: string) {
       cursorDot?.animate(
-        { borderWidth: "1px", borderStyle: "solid", borderColor: color },
+        {
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: color,
+          zIndex: 10,
+        },
         { duration: 100, fill: "forwards" }
       );
       cursorShadow1?.animate(
@@ -118,6 +123,18 @@ const Cursor = () => {
       );
       cursorShadow6?.animate(
         { backgroundColor: "transparent" },
+        { duration: 100, fill: "forwards" }
+      );
+    }
+    function bigCursor(color: string, size: string) {
+      cursorDot?.animate(
+        {
+          width: size,
+          height: size,
+          backgroundColor: color,
+          borderRadius: "100%",
+          zIndex: 1,
+        },
         { duration: 100, fill: "forwards" }
       );
     }
@@ -180,6 +197,7 @@ const Cursor = () => {
     const hideCursors = document.querySelectorAll(".hideCursor");
     const blackCursors = document.querySelectorAll(".blackCursor");
     const outlineCursors = document.querySelectorAll(".outlineCursor");
+    const bigCursors = document.querySelectorAll(".bigCursor");
 
     hideCursors.forEach((menu) => {
       menu.addEventListener("mouseenter", () => {
@@ -211,6 +229,14 @@ const Cursor = () => {
       });
       menu.addEventListener("mouseleave", () => {
         showCursor("white");
+      });
+    });
+    bigCursors.forEach((menu) => {
+      menu.addEventListener("mouseenter", () => {
+        bigCursor("white", "200px");
+      });
+      menu.addEventListener("mouseleave", () => {
+        bigCursor("white", "20px");
       });
     });
   }, []);
