@@ -19,6 +19,24 @@
 *::-webkit-scrollbar {
   display: none;
 }
+*::selection {
+  color: white;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0),
+    rgb(27, 27, 27),
+    rgb(0, 0, 0)
+  );
+}
+
+.customCursor {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  border-radius: 100px;
+  background-color: white;
+  mix-blend-mode: difference;
+}
 
 .banner {
   background-image: linear-gradient(
@@ -36,20 +54,21 @@
 /* ----------------// Cursor Design //---------------- */
 
 .cursor-dot {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  mix-blend-mode: difference;
+}
+.cursor-circle {
+  width: 40px;
+  height: 40px;
   background-color: transparent;
   border: 1px solid transparent;
 }
-.cursor-shadow {
-  width: 18px;
-  height: 18px;
-  background-color: rgba(255, 255, 255, 0.603);
-  background-color: transparent;
-}
 
 .cursor-dot,
-.cursor-shadow {
+.cursor-circle {
   position: absolute;
   top: 0;
   left: 0;
@@ -57,76 +76,4 @@
   border-radius: 50%;
   z-index: 999;
   pointer-events: none;
-}
-
-[data-cursor-shadow-1] {
-  width: 16px;
-  height: 16px;
-  opacity: 80%;
-  background-color: transparent;
-}
-[data-cursor-shadow-2] {
-  width: 14px;
-  height: 14px;
-  opacity: 60%;
-  background-color: transparent;
-}
-[data-cursor-shadow-3] {
-  width: 12px;
-  height: 12px;
-  opacity: 40%;
-  background-color: transparent;
-}
-[data-cursor-shadow-4] {
-  width: 10px;
-  height: 10px;
-  opacity: 20%;
-  background-color: transparent;
-}
-[data-cursor-shadow-5] {
-  width: 8px;
-  height: 8px;
-  opacity: 15%;
-  background-color: transparent;
-}
-[data-cursor-shadow-6] {
-  width: 5px;
-  height: 5px;
-  opacity: 10%;
-  background-color: transparent;
-}
-
-.magnet {
-  position: relative;
-  z-index: 2;
-  border-radius: 20px;
-}
-.magnet:hover {
-  color: black;
-}
-.magnet::before {
-  position: absolute;
-  content: "";
-  bottom: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background-color: white;
-  transition: 0.4s ease-out;
-  z-index: -1;
-  @apply rounded-full;
-}
-.magnet:hover::before {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.bigCursor:hover [data-cursor-shadow-1] {
-  width: 200px;
-  height: 200px;
-  background-color: white;
-  border: 1px solid transparent;
-  border-radius: 100%;
 }
