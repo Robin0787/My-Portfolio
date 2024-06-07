@@ -29,15 +29,6 @@
   );
 }
 
-.customCursor {
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  border-radius: 100px;
-  background-color: white;
-  mix-blend-mode: difference;
-}
-
 .banner {
   background-image: linear-gradient(
     to right,

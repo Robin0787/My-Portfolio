@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 
 const Cursor = () => {
@@ -76,27 +77,29 @@ const Cursor = () => {
     const blackCursors = document.querySelectorAll(".blackCursor");
     const bigCursors = document.querySelectorAll(".bigCursor");
 
-    magnify.forEach((menu) => {
-      menu.addEventListener("mouseenter", () => {
-        resizeCursor("white", "60px");
+    magnify.forEach((item: Element) => {
+      item.addEventListener("mouseenter", () => {
+        let elementsWidth = (item as HTMLElement).offsetWidth;
+        elementsWidth = elementsWidth || 40;
+        resizeCursor("white", `${elementsWidth}px`);
       });
-      menu.addEventListener("mouseleave", () => {
+      item.addEventListener("mouseleave", () => {
         defaultCursor("white");
       });
     });
-    blackCursors.forEach((menu) => {
-      menu.addEventListener("mouseenter", () => {
+    blackCursors.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
         defaultCursor("black");
       });
-      menu.addEventListener("mouseleave", () => {
+      item.addEventListener("mouseleave", () => {
         defaultCursor("white");
       });
     });
-    bigCursors.forEach((menu) => {
-      menu.addEventListener("mouseenter", () => {
+    bigCursors.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
         resizeCursor("white", "200px");
       });
-      menu.addEventListener("mouseleave", () => {
+      item.addEventListener("mouseleave", () => {
         defaultCursor("white");
       });
     });
