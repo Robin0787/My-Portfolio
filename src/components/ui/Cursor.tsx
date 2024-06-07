@@ -2,14 +2,16 @@
 import { useEffect } from "react";
 
 const Cursor = () => {
-  // Use useEffect for initial cursor setup and cleanup
+  const defaultCursorDotColor = "white";
+  const defaultCursorCircleColor = "#b9b9b9a2";
+
   useEffect(() => {
     const cursorDot: HTMLElement | null = document.querySelector(".cursor-dot");
     const cursorCircle: HTMLElement | null =
       document.querySelector(".cursor-circle");
 
     document.body.addEventListener("mouseenter", () => {
-      defaultCursor("white");
+      defaultCursor(defaultCursorDotColor, defaultCursorCircleColor);
     });
     document.body.addEventListener("mouseleave", () => {
       hideCursor();
@@ -41,18 +43,23 @@ const Cursor = () => {
         { duration: 100, fill: "forwards" }
       );
     }
-    function defaultCursor(color: string) {
+
+    function defaultCursor(cursorDotColor: string, cursorCircleColor: string) {
       cursorDot?.animate(
         {
           width: "10px",
           height: "10px",
-          backgroundColor: color,
+          backgroundColor: cursorDotColor,
           borderRadius: "100%",
         },
         { duration: 100, fill: "forwards" }
       );
       cursorCircle?.animate(
-        { width: "40px", height: "40px", border: `1px solid ${color}` },
+        {
+          width: "45px",
+          height: "45px",
+          border: `1px solid ${cursorCircleColor}`,
+        },
         { duration: 100, fill: "forwards" }
       );
     }
@@ -69,7 +76,39 @@ const Cursor = () => {
           left: `${posX}px`,
           top: `${posY}px`,
         },
-        { duration: 300, fill: "forwards" }
+        { duration: 1000, fill: "forwards" }
+      );
+    });
+
+    window.addEventListener("mousedown", () => {
+      cursorCircle!.animate(
+        {
+          width: "60px",
+          height: "60px",
+          borderWidth: "3px",
+          borderColor: "white",
+        },
+        {
+          duration: 300,
+          fill: "forwards",
+          easing: "ease-out",
+        }
+      );
+    });
+    window.addEventListener("mouseup", () => {
+      cursorCircle!.animate(
+        {
+          width: "45px",
+          height: "45px",
+          borderWidth: "1px",
+          borderColor: defaultCursorCircleColor,
+        },
+        {
+          delay: 100,
+          duration: 300,
+          fill: "forwards",
+          easing: "ease-out",
+        }
       );
     });
 
@@ -80,30 +119,37 @@ const Cursor = () => {
     magnify.forEach((item: Element) => {
       item.addEventListener("mouseenter", () => {
         let elementsWidth = (item as HTMLElement).offsetWidth;
-        elementsWidth = elementsWidth || 40;
+        elementsWidth = elementsWidth || 60;
+        if (elementsWidth <= 50) {
+          elementsWidth = 60;
+        }
         resizeCursor("white", `${elementsWidth}px`);
+        cursorCircle!.style.display = "none";
       });
       item.addEventListener("mouseleave", () => {
-        defaultCursor("white");
+        defaultCursor(defaultCursorDotColor, defaultCursorCircleColor);
+        cursorCircle!.style.display = "block";
       });
     });
     blackCursors.forEach((item) => {
       item.addEventListener("mouseenter", () => {
-        defaultCursor("black");
+        defaultCursor("black", "black");
       });
       item.addEventListener("mouseleave", () => {
-        defaultCursor("white");
+        defaultCursor(defaultCursorDotColor, defaultCursorCircleColor);
       });
     });
     bigCursors.forEach((item) => {
       item.addEventListener("mouseenter", () => {
         resizeCursor("white", "200px");
+        cursorCircle!.style.display = "none";
       });
       item.addEventListener("mouseleave", () => {
-        defaultCursor("white");
+        defaultCursor(defaultCursorDotColor, defaultCursorCircleColor);
+        cursorCircle!.style.display = "block";
       });
     });
-  }, []);
+  });
 
   return (
     <div>
