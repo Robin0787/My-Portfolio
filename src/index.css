@@ -29,7 +29,7 @@
   );
 }
 
-.banner {
+.primaryBg {
   background-image: linear-gradient(
     to right,
     rgb(0, 0, 0),
