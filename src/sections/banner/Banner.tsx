@@ -1,4 +1,3 @@
-import image from "../../assets/images/my_photo.png";
 import Container from "../../components/ui/Container";
 
 const Banner = () => {
@@ -13,13 +12,7 @@ const Banner = () => {
               <h1 className="heading bigCursor">Hossen</h1>
             </div>
           </div>
-          <div>
-            <img
-              src={image}
-              alt="my_image"
-              className="rounded-full object-fit size-[300px] md:size-[400px] xl:size-[500px]"
-            />
-          </div>
+          <div></div>
         </section>
       </Container>
     </section>
