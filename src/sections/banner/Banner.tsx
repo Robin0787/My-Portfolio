@@ -2,7 +2,7 @@ import Container from "../../components/ui/Container";
 
 const Banner = () => {
   return (
-    <section className="w-full h-screen primaryBg pt-[89px]">
+    <section className="w-full h-screen primaryBg">
       <Container className="w-full h-full">
         <section className="w-full h-full text-white flex justify-center items-center">
           <div className="flex flex-col items-center justify-center ">

@@ -1,10 +1,9 @@
-import About from "../../sections/about/About";
-import Banner from "../../sections/banner/Banner";
+import About from "../about/About";
 
 const Home = () => {
   return (
     <section className="h-full w-full">
-      <Banner />
+      {/* <Banner /> */}
       <About />
     </section>
   );
